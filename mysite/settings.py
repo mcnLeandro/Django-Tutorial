@@ -75,16 +75,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-        'NAME': 'name',
-        'USER': 'user',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+DATABASES = {}
 
 
 # Password validation
@@ -139,8 +130,7 @@ if not DEBUG:
     import django_heroku
     django_heroku.settings(locals())
 
-
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True, default='postgres://kipyvgcuwwqjxo:38e2c66e3020c4614da2538e1e26d320bd8aa56365cd5b5ef3b270a08a8daf5b@ec2-3-232-22-121.compute-1.amazonaws.com:5432/d4fqu0q6nblhi0')
 DATABASES['default'].update(db_from_env)
 
 STATIC_ROOT = BASE_DIR / 'staticfiles/'
